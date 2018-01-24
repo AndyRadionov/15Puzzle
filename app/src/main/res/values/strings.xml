@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Pyatnashki</string>
+    <string name="moves_number">Ход: %d</string>
+    <string name="tile_1_text">1</string>
+    <string name="tile_2_text">2</string>
+    <string name="tile_3_text">3</string>
+    <string name="tile_4_text">4</string>
+    <string name="tile_5_text">5</string>
+    <string name="tile_6_text">6</string>
+    <string name="tile_7_text">7</string>
+    <string name="tile_8_text">8</string>
+    <string name="tile_9_text">9</string>
+    <string name="tile_10_text">10</string>
+    <string name="tile_11_text">11</string>
+    <string name="tile_12_text">12</string>
+    <string name="tile_13_text">13</string>
+    <string name="tile_14_text">14</string>
+    <string name="tile_15_text">15</string>
+
+    <string name="lets_play_title">ПОИГРАЕМ?</string>
+
+    <string name="start_button">Старт</string>
+    <string name="reset_button">Сброс</string>
+
+    <string name="result_dialog_title">Результат игры</string>
+    <string name="result_message">Поздравлямба!\nСделано ходов: %d</string>
+
+    <string name="restart_button">Рестарт</string>
+    <string name="scores_button">Таблица результатов</string>
+    <string name="exit_button">Выход</string>
+</resources>
