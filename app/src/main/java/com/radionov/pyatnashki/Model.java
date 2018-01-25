@@ -1,12 +1,15 @@
 package com.radionov.pyatnashki;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Arrays;
 
 /**
  * @author Andrey Radionov
  */
 
-public class Model {
+public class Model implements Parcelable {
     private static final int[] WIN_POSITION = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
 
     private int[] mNumbers;
@@ -18,6 +21,25 @@ public class Model {
     public Model() {
         resetGame();
     }
+
+    protected Model(Parcel in) {
+        mNumbers = in.createIntArray();
+        mMovesNumber = in.readInt();
+        mZeroIndex = in.readInt();
+        mCanMove = in.readByte() != 0;
+    }
+
+    public static final Creator<Model> CREATOR = new Creator<Model>() {
+        @Override
+        public Model createFromParcel(Parcel in) {
+            return new Model(in);
+        }
+
+        @Override
+        public Model[] newArray(int size) {
+            return new Model[size];
+        }
+    };
 
     public int[] getNumbers() {
         return mNumbers;
@@ -49,8 +71,15 @@ public class Model {
     }
 
     public boolean isGameWon() {
-        if (Arrays.equals(WIN_POSITION, mNumbers)) {
-            mCanMove = false;
+//        if (Arrays.equals(WIN_POSITION, mNumbers)) {
+//            mCanMove = false;
+//            return true;
+//        }
+
+        if (mNumbers[0] == 1 &&
+                mNumbers[1] == 2 &&
+                mNumbers[2] == 3 &&
+                mNumbers[3] == 4) {
             return true;
         }
         return false;
@@ -105,5 +134,18 @@ public class Model {
             return move(mZeroIndex - 4);
         }
         return -1;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeIntArray(mNumbers);
+        dest.writeInt(mMovesNumber);
+        dest.writeInt(mZeroIndex);
+        dest.writeByte((byte) (mCanMove ? 1 : 0));
     }
 }

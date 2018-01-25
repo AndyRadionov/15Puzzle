@@ -28,4 +28,8 @@
     <string name="restart_button">Рестарт</string>
     <string name="scores_button">Таблица результатов</string>
     <string name="exit_button">Выход</string>
+
+    <!--SharedPreferences-->
+    <string name="scores_list_key">scores_list</string>
+    <string name="scores_list_default">[]</string>
 </resources>

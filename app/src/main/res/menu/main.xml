@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_scores_table"
+        android:title="Таблица результатов"
+        android:orderInCategory="1"
+        app:showAsAction="never">
+    </item>
+
+    <item android:id="@+id/menu_about"
+        android:title="О приложении"
+        android:orderInCategory="1"
+        app:showAsAction="never">
+    </item>
+
+    <item android:id="@+id/menu_exit"
+        android:title="Выход"
+        android:orderInCategory="1"
+        app:showAsAction="never">
+    </item>
+</menu>

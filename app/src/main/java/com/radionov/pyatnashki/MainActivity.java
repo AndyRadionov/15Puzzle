@@ -7,6 +7,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +17,9 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements GameView {
+public class MainActivity extends BaseActivity implements GameView {
+    public static final int RESULT_CODE_EXIT = 100;
+    private static final String MODEL_KEY = "model_key";
 
     private String mMovesText;
     private String mStartButtonText;
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements GameView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initTiles();
 
         model = new Model();
 
@@ -41,7 +47,56 @@ public class MainActivity extends AppCompatActivity implements GameView {
         mStartButtonText = getString(R.string.start_button);
         mResetButtonText = getString(R.string.reset_button);
 
-        initTiles();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        model = savedInstanceState.getParcelable(MODEL_KEY);
+
+        if (model == null) {
+            return;
+        }
+
+        if (model.isGameWon()) {
+            model.resetGame();
+            repaint();
+            return;
+        }
+
+        if (model.getMovesNumber() > 0) {
+            repaint();
+            Button button = findViewById(R.id.btn_start);
+            button.setText(mResetButtonText);
+            mTilesContainer.setOnTouchListener(new OnSwipeTouchListener(this, this, model));
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(MODEL_KEY, model);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_scores_table:
+                startScoresActivity();
+                return true;
+            case R.id.menu_about:
+                showAboutDialog();
+                return true;
+            case R.id.menu_exit:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -119,12 +174,7 @@ public class MainActivity extends AppCompatActivity implements GameView {
                 .setNeutralButton(R.string.scores_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Context context = MainActivity.this;
-                        Intent startScoresActivity = new Intent(context, ScoresActivity.class);
-                        startScoresActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-                        startActivity(startScoresActivity);
+                        startScoresActivity();
                     }
                 })
                 .setNegativeButton(R.string.restart_button, new DialogInterface.OnClickListener() {
@@ -137,5 +187,19 @@ public class MainActivity extends AppCompatActivity implements GameView {
                 .create()
                 .show();
 
+    }
+
+    private void startScoresActivity() {
+        Intent startScoresActivity = new Intent(this, ScoresActivity.class);
+        startActivityForResult(startScoresActivity, ScoresActivity.REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (ScoresActivity.REQUEST_CODE == requestCode) {
+            if (RESULT_CODE_EXIT == resultCode) {
+                MainActivity.this.finish();
+            }
+        }
     }
 }
