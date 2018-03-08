@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ecbd77</color>
+    <color name="colorPrimaryDark">#c69b5c</color>
+    <color name="colorAccent">#1f6fb4</color>
     <color name="field_bg_color">#d9d9d9</color>
     <color name="field_border_color">#26c6da</color>
-    <color name="tile_bg_color">#ecbd77</color>
+    <color name="tile_bg_color">@color/colorPrimary</color>
+    <color name="gray_color">#eeeeee</color>
 </resources>

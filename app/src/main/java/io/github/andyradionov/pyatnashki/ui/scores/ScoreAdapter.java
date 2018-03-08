@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.ui.scores;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,12 +14,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import io.github.andyradionov.pyatnashki.R;
+import io.github.andyradionov.pyatnashki.game.Score;
+
 /**
  * @author Andrey Radionov
  */
 
 public class ScoreAdapter extends ArrayAdapter<Score> {
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm, dd MMM yyyy",
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm, dd.MM.yyyy",
             Locale.getDefault());
 
     public ScoreAdapter(@NonNull Context context, List<Score> scores) {

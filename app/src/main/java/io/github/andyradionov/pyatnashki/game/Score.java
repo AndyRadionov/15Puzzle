@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.game;
 
 import android.support.annotation.NonNull;
 

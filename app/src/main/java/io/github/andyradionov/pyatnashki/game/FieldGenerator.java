@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.game;
 
 import java.util.HashSet;
 import java.util.Random;

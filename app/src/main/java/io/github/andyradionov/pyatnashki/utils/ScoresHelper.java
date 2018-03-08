@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import io.github.andyradionov.pyatnashki.R;
+import io.github.andyradionov.pyatnashki.game.Score;
 
 /**
  * @author Andrey Radionov

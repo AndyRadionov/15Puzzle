@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.game;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -71,17 +71,11 @@ public class Model implements Parcelable {
     }
 
     public boolean isGameWon() {
-//        if (Arrays.equals(WIN_POSITION, mNumbers)) {
-//            mCanMove = false;
-//            return true;
-//        }
-
-        if (mNumbers[0] == 1 &&
-                mNumbers[1] == 2 &&
-                mNumbers[2] == 3 &&
-                mNumbers[3] == 4) {
+        if (Arrays.equals(WIN_POSITION, mNumbers)) {
+            mCanMove = false;
             return true;
         }
+
         return false;
     }
 

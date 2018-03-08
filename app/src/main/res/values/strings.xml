@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pyatnashki</string>
+    <string name="app_name">Пятнашки</string>
     <string name="moves_number">Ход: %d</string>
     <string name="tile_1_text">1</string>
     <string name="tile_2_text">2</string>
@@ -23,13 +23,15 @@
     <string name="reset_button">Сброс</string>
 
     <string name="result_dialog_title">Результат игры</string>
-    <string name="result_message">Поздравлямба!\nСделано ходов: %d</string>
+    <string name="result_message">Поздравляю!\n\nСделано ходов: %d</string>
 
+    <string name="scores_title">Таблица результатов</string>
     <string name="restart_button">Рестарт</string>
-    <string name="scores_button">Таблица результатов</string>
-    <string name="exit_button">Выход</string>
+    <string name="scores_button">Результаты</string>
+    <string name="exit">Выход</string>
 
     <!--SharedPreferences-->
     <string name="scores_list_key">scores_list</string>
     <string name="scores_list_default">[]</string>
+    <string name="advert">Advert</string>
 </resources>

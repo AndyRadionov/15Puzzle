@@ -1,9 +1,12 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.ui.game;
 
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import io.github.andyradionov.pyatnashki.game.Model;
+import io.github.andyradionov.pyatnashki.game.MoveDirection;
 
 /**
  * @author Andrey Radionov

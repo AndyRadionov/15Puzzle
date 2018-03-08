@@ -1,6 +1,8 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki;
 
 import org.junit.Test;
+
+import io.github.andyradionov.pyatnashki.game.FieldGenerator;
 
 import static org.junit.Assert.*;
 

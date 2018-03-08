@@ -3,19 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_scores_table"
-        android:title="Таблица результатов"
-        android:orderInCategory="1"
-        app:showAsAction="never">
-    </item>
-
-    <item android:id="@+id/menu_about"
-        android:title="О приложении"
+        android:title="@string/scores_title"
         android:orderInCategory="1"
         app:showAsAction="never">
     </item>
 
     <item android:id="@+id/menu_exit"
-        android:title="Выход"
+        android:title="@string/exit"
         android:orderInCategory="1"
         app:showAsAction="never">
     </item>

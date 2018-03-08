@@ -6,11 +6,12 @@
     android:orientation="horizontal"
     android:layout_gravity="center"
     android:padding="8dp"
-    android:background="@color/tile_bg_color">
+    android:background="@color/tile_bg_color"
+    tools:ignore="RtlHardcoded,SpUsage">
 
     <TextView
         android:textColor="@android:color/white"
-        android:textSize="16dp"
+        android:textSize="@dimen/score_text_size"
         android:layout_gravity="center"
         android:gravity="center"
         tools:text="10"
@@ -21,11 +22,9 @@
 
     <TextView
         android:textColor="@android:color/white"
-
-        android:textSize="30dp"
+        android:textSize="@dimen/score_primary_text_size"
         android:layout_gravity="center"
         android:gravity="center"
-
         tools:text="350"
         android:id="@+id/tv_score_display"
         android:layout_width="0dp"
@@ -34,11 +33,9 @@
 
     <TextView
         android:textColor="@android:color/white"
-
-        android:textSize="16dp"
+        android:textSize="@dimen/score_text_size"
         android:gravity="center"
         android:layout_gravity="center"
-
         tools:text="01:10 25.янв.2017"
         android:minLines="2"
         android:layout_weight="2"

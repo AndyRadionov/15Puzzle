@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screen_background"
     android:orientation="vertical"
-    tools:context="com.radionov.pyatnashki.ScoresActivity">
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:text="Результаты"
-        android:textAlignment="center"/>
+    tools:context="io.github.andyradionov.pyatnashki.ui.scores.ScoresActivity">
 
     <ListView
         android:background="@drawable/field_background"
@@ -23,18 +14,35 @@
         android:padding="4dp"
         android:id="@+id/lv_scores"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_centerHorizontal="true"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp"
-        >
-
+        android:layout_marginBottom="20dp">
     </ListView>
-    <TextView android:id="@android:id/empty"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Нет результатов"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:textAlignment="center"/>
+        android:layout_height="40dp">
+        <ImageView
+            android:onClick="onBannerClick"
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/banner_background"
+            android:contentDescription="@string/advert"
+            android:padding="8dp"
+            android:src="@drawable/banner" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_info_outline_24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
 </LinearLayout>

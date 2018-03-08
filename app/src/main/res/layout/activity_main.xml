@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main" xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screen_background"
-    tools:context="com.radionov.pyatnashki.MainActivity">
+    tools:context="io.github.andyradionov.pyatnashki.ui.game.GameActivity"
+    tools:ignore="RtlHardcoded,SpUsage" >
 
     <TextView
-
         android:id="@+id/tv_info_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
         android:background="@drawable/text_background"
         android:padding="8dp"
         android:text="@string/lets_play_title"
         android:textColor="@android:color/holo_blue_dark"
-        android:textSize="22dp"
+        android:textSize="@dimen/scores_text_size"
         android:textStyle="bold"
-        tools:ignore="SpUsage" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tiles_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <GridLayout
         android:id="@+id/tiles_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/field_background"
         android:columnCount="4"
-        android:padding="4dp">
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_display">
 
         <TextView
             android:id="@+id/tile_1"
@@ -115,18 +119,43 @@
     </GridLayout>
 
     <Button
-        android:layout_marginRight="4dp"
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/text_background"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/btn_background"
         android:onClick="onButtonClick"
         android:padding="16dp"
         android:text="@string/start_button"
         android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:textSize="@dimen/button_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/iv_banner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tiles_container" />
+
+    <ImageView
+        android:onClick="onBannerClick"
+        android:id="@+id/iv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/banner_background"
+        android:contentDescription="@string/advert"
+        android:padding="8dp"
+        android:src="@drawable/banner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_info_outline_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        tools:ignore="ContentDescription" />
+</android.support.constraint.ConstraintLayout>

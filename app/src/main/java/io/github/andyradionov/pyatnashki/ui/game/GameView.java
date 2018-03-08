@@ -1,4 +1,4 @@
-package com.radionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.ui.game;
 
 /**
  * @author Andrey Radionov
