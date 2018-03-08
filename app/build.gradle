@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.radionov.pyatnashki"
+        applicationId "io.github.andyradionov.pyatnashki"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
