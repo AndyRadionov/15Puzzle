@@ -12,7 +12,7 @@ import android.view.View;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onBannerClick(View view) {
-        String url = "https://ostrovok.ru/";
+        String url = "https://ostrovok.ru/?utm_sourse=app-mobile&utm_medium=banner&utm_campaign=ostrovok";
         Uri webpage = Uri.parse(url);
         Intent startWebPageIntent = new Intent(Intent.ACTION_VIEW, webpage);
         if (startWebPageIntent.resolveActivity(getPackageManager()) != null) {
