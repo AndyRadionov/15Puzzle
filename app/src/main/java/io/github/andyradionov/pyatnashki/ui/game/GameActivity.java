@@ -14,7 +14,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import io.github.andyradionov.pyatnashki.R;
-import io.github.andyradionov.pyatnashki.game.Model;
+import io.github.andyradionov.pyatnashki.game.GameModel;
 import io.github.andyradionov.pyatnashki.ui.BaseActivity;
 import io.github.andyradionov.pyatnashki.ui.scores.ScoresActivity;
 import io.github.andyradionov.pyatnashki.utils.ScoresHelper;
@@ -33,7 +33,7 @@ public class GameActivity extends BaseActivity implements GameView {
 
     private TextView[] mTiles;
 
-    private Model model;
+    private GameModel gameModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class GameActivity extends BaseActivity implements GameView {
 
         initTiles();
 
-        model = new Model();
+        gameModel = new GameModel();
 
         mMovesNumberDisplay = findViewById(R.id.tv_info_display);
         mTilesContainer = findViewById(R.id.tiles_container);
@@ -60,30 +60,30 @@ public class GameActivity extends BaseActivity implements GameView {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        model = savedInstanceState.getParcelable(MODEL_KEY);
+        gameModel = savedInstanceState.getParcelable(MODEL_KEY);
 
-        if (model == null) {
+        if (gameModel == null) {
             return;
         }
 
-        if (model.isGameWon()) {
-            model.resetGame();
+        if (gameModel.isGameWon()) {
+            gameModel.resetGame();
             repaint();
             return;
         }
 
-        if (model.getMovesNumber() > 0) {
+        if (gameModel.getMovesNumber() > 0) {
             repaint();
             Button button = findViewById(R.id.btn_start);
             button.setText(mResetButtonText);
-            mTilesContainer.setOnTouchListener(new OnSwipeTouchListener(this, this, model));
+            mTilesContainer.setOnTouchListener(new OnSwipeTouchListener(this, this, gameModel));
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(MODEL_KEY, model);
+        outState.putParcelable(MODEL_KEY, gameModel);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class GameActivity extends BaseActivity implements GameView {
 
     @Override
     public void swapTiles(int filledTileId, int emptyTileId) {
-        mMovesNumberDisplay.setText(String.format(mMovesText, model.getMovesNumber()));
+        mMovesNumberDisplay.setText(String.format(mMovesText, gameModel.getMovesNumber()));
         String number = mTiles[filledTileId].getText().toString();
         mTiles[emptyTileId].setText(number);
         mTiles[emptyTileId].setVisibility(View.VISIBLE);
@@ -117,7 +117,7 @@ public class GameActivity extends BaseActivity implements GameView {
 
     @Override
     public void setGameWon() {
-        ScoresHelper.updateScoresList(this, model.getMovesNumber());
+        ScoresHelper.updateScoresList(this, gameModel.getMovesNumber());
         showScoreDialog();
     }
 
@@ -126,9 +126,9 @@ public class GameActivity extends BaseActivity implements GameView {
         if (button.getText().equals(mStartButtonText)) {
             repaint();
             button.setText(mResetButtonText);
-            mTilesContainer.setOnTouchListener(new OnSwipeTouchListener(this, this, model));
+            mTilesContainer.setOnTouchListener(new OnSwipeTouchListener(this, this, gameModel));
         } else {
-            model.resetGame();
+            gameModel.resetGame();
             repaint();
         }
     }
@@ -148,7 +148,7 @@ public class GameActivity extends BaseActivity implements GameView {
     }
 
     private void showScoreDialog() {
-        String message = getString(R.string.result_message, model.getMovesNumber());
+        String message = getString(R.string.result_message, gameModel.getMovesNumber());
 
         new AlertDialog.Builder(this)
                 .setMessage(message)
@@ -169,7 +169,7 @@ public class GameActivity extends BaseActivity implements GameView {
                 .setNegativeButton(R.string.restart_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        model.resetGame();
+                        gameModel.resetGame();
                         repaint();
                     }
                 })
@@ -209,10 +209,10 @@ public class GameActivity extends BaseActivity implements GameView {
     }
 
     private void repaint() {
-        mMovesNumberDisplay.setText(String.format(mMovesText, model.getMovesNumber()));
+        mMovesNumberDisplay.setText(String.format(mMovesText, gameModel.getMovesNumber()));
         for (int i = 0; i < mTiles.length; i++) {
-            mTiles[i].setText(String.valueOf(model.getNumbers()[i]));
-            if (model.getNumbers()[i] == 0) {
+            mTiles[i].setText(String.valueOf(gameModel.getNumbers()[i]));
+            if (gameModel.getNumbers()[i] == 0) {
                 mTiles[i].setVisibility(View.INVISIBLE);
             } else {
                 mTiles[i].setVisibility(View.VISIBLE);

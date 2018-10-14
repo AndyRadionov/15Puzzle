@@ -5,7 +5,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import io.github.andyradionov.pyatnashki.game.Model;
+import io.github.andyradionov.pyatnashki.game.GameModel;
 import io.github.andyradionov.pyatnashki.game.MoveDirection;
 
 /**
@@ -14,15 +14,15 @@ import io.github.andyradionov.pyatnashki.game.MoveDirection;
 
 public class OnSwipeTouchListener implements View.OnTouchListener {
     private GameView gameView;
-    private Model model;
+    private GameModel gameModel;
 
     private final GestureDetector gestureDetector;
 
-    public OnSwipeTouchListener(Context ctx, GameView gameView, Model model) {
+    public OnSwipeTouchListener(Context ctx, GameView gameView, GameModel gameModel) {
         gestureDetector = new GestureDetector(ctx, new GestureListener());
 
         this.gameView = gameView;
-        this.model = model;
+        this.gameModel = gameModel;
     }
 
 
@@ -74,12 +74,12 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
     }
 
     private void moveTile(MoveDirection direction) {
-        if (!model.canMove()) {
+        if (!gameModel.canMove()) {
             return;
         }
 
-        int emptyTileIndex = model.getZeroIndex();
-        int movedTileIndex = model.move(direction);
+        int emptyTileIndex = gameModel.getZeroIndex();
+        int movedTileIndex = gameModel.move(direction);
 
         if (movedTileIndex == -1) {
             return;
@@ -87,7 +87,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
         gameView.swapTiles(movedTileIndex, emptyTileIndex);
 
-        if (model.isGameWon()) {
+        if (gameModel.isGameWon()) {
             gameView.setGameWon();
         }
     }

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author Andrey Radionov
  */
 
-public class Model implements Parcelable {
+public class GameModel implements Parcelable {
     private static final int[] WIN_POSITION = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
 
     private int[] mNumbers;
@@ -18,26 +18,26 @@ public class Model implements Parcelable {
 
     private boolean mCanMove;
 
-    public Model() {
+    public GameModel() {
         resetGame();
     }
 
-    protected Model(Parcel in) {
+    protected GameModel(Parcel in) {
         mNumbers = in.createIntArray();
         mMovesNumber = in.readInt();
         mZeroIndex = in.readInt();
         mCanMove = in.readByte() != 0;
     }
 
-    public static final Creator<Model> CREATOR = new Creator<Model>() {
+    public static final Creator<GameModel> CREATOR = new Creator<GameModel>() {
         @Override
-        public Model createFromParcel(Parcel in) {
-            return new Model(in);
+        public GameModel createFromParcel(Parcel in) {
+            return new GameModel(in);
         }
 
         @Override
-        public Model[] newArray(int size) {
-            return new Model[size];
+        public GameModel[] newArray(int size) {
+            return new GameModel[size];
         }
     };
 
