@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ import io.github.andyradionov.pyatnashki.utils.ScoresHelper;
 public class GameActivity extends BaseActivity implements GameView {
     public static final int RESULT_CODE_EXIT = 100;
     private static final String MODEL_KEY = "model_key";
+    private static final int TILES_SIZE = 16;
 
     private String mMovesText;
     private String mStartButtonText;
@@ -190,23 +192,20 @@ public class GameActivity extends BaseActivity implements GameView {
     }
 
     private void initTiles() {
-        mTiles = new TextView[16];
-        mTiles[0] = findViewById(R.id.tile_1);
-        mTiles[1] = findViewById(R.id.tile_2);
-        mTiles[2] = findViewById(R.id.tile_3);
-        mTiles[3] = findViewById(R.id.tile_4);
-        mTiles[4] = findViewById(R.id.tile_5);
-        mTiles[5] = findViewById(R.id.tile_6);
-        mTiles[6] = findViewById(R.id.tile_7);
-        mTiles[7] = findViewById(R.id.tile_8);
-        mTiles[8] = findViewById(R.id.tile_9);
-        mTiles[9] = findViewById(R.id.tile_10);
-        mTiles[10] = findViewById(R.id.tile_11);
-        mTiles[11] = findViewById(R.id.tile_12);
-        mTiles[12] = findViewById(R.id.tile_13);
-        mTiles[13] = findViewById(R.id.tile_14);
-        mTiles[14] = findViewById(R.id.tile_15);
-        mTiles[15] = findViewById(R.id.tile_16);
+        mTiles = new TextView[TILES_SIZE];
+        GridLayout tilesContainer = findViewById(R.id.tiles_container);
+        for (int i = 0; i < mTiles.length - 1; i++) {
+            initTile(R.layout.tile, i, tilesContainer);
+        }
+        initTile(R.layout.empty_tile, TILES_SIZE - 1, tilesContainer);
+    }
+
+    private void initTile(int tileLayout, int tileNumber, GridLayout tilesContainer) {
+        TextView tile = (TextView) LayoutInflater.from(this)
+                .inflate(tileLayout, tilesContainer, false);
+        tile.setText(String.valueOf(tileNumber + 1));
+        mTiles[tileNumber] = tile;
+        tilesContainer.addView(tile);
     }
 
     private void repaint() {
