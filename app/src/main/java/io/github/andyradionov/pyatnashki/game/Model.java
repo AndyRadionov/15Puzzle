@@ -123,7 +123,7 @@ public class Model implements Parcelable {
         return -1;
     }
 
-    public int moveDown() {
+    private int moveDown() {
         if (mZeroIndex > 3) {
             return move(mZeroIndex - 4);
         }

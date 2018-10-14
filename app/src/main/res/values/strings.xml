@@ -1,37 +1,37 @@
 <resources>
-    <string name="app_name">Пятнашки</string>
-    <string name="moves_number">Ход: %d</string>
-    <string name="tile_1_text">1</string>
-    <string name="tile_2_text">2</string>
-    <string name="tile_3_text">3</string>
-    <string name="tile_4_text">4</string>
-    <string name="tile_5_text">5</string>
-    <string name="tile_6_text">6</string>
-    <string name="tile_7_text">7</string>
-    <string name="tile_8_text">8</string>
-    <string name="tile_9_text">9</string>
-    <string name="tile_10_text">10</string>
-    <string name="tile_11_text">11</string>
-    <string name="tile_12_text">12</string>
-    <string name="tile_13_text">13</string>
-    <string name="tile_14_text">14</string>
-    <string name="tile_15_text">15</string>
+    <string name="app_name">15 puzzle</string>
+    <string name="moves_number">Move: %d</string>
+    <string name="tile_1_text" translatable="false">1</string>
+    <string name="tile_2_text" translatable="false">2</string>
+    <string name="tile_3_text" translatable="false">3</string>
+    <string name="tile_4_text" translatable="false">4</string>
+    <string name="tile_5_text" translatable="false">5</string>
+    <string name="tile_6_text" translatable="false">6</string>
+    <string name="tile_7_text" translatable="false">7</string>
+    <string name="tile_8_text" translatable="false">8</string>
+    <string name="tile_9_text" translatable="false">9</string>
+    <string name="tile_10_text" translatable="false">10</string>
+    <string name="tile_11_text" translatable="false">11</string>
+    <string name="tile_12_text" translatable="false">12</string>
+    <string name="tile_13_text" translatable="false">13</string>
+    <string name="tile_14_text" translatable="false">14</string>
+    <string name="tile_15_text" translatable="false">15</string>
 
-    <string name="lets_play_title">ПОИГРАЕМ?</string>
+    <string name="lets_play_title">Let\'s play?</string>
 
-    <string name="start_button">Старт</string>
-    <string name="reset_button">Сброс</string>
+    <string name="start_button">Start</string>
+    <string name="reset_button">Reset</string>
 
-    <string name="result_dialog_title">Результат игры</string>
-    <string name="result_message">Поздравляю!\n\nСделано ходов: %d</string>
+    <string name="result_dialog_title">Result</string>
+    <string name="result_message">Congratulations!\n\nMoves made: %d</string>
 
-    <string name="scores_title">Таблица результатов</string>
-    <string name="restart_button">Рестарт</string>
-    <string name="scores_button">Результаты</string>
-    <string name="exit">Выход</string>
+    <string name="scores_title">Scores table</string>
+    <string name="restart_button">Restart</string>
+    <string name="scores_button">Results</string>
+    <string name="exit">Exit</string>
 
     <!--SharedPreferences-->
-    <string name="scores_list_key">scores_list</string>
-    <string name="scores_list_default">[]</string>
-    <string name="advert">Advert</string>
+    <string name="scores_list_key" translatable="false">scores_list</string>
+    <string name="scores_list_default" translatable="false">[]</string>
+    <string name="advert" translatable="false">Advert</string>
 </resources>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Пятнашки</string>
+    <string name="moves_number">Ход: %d</string>
+
+    <string name="lets_play_title">ПОИГРАЕМ?</string>
+
+    <string name="start_button">Старт</string>
+    <string name="reset_button">Сброс</string>
+
+    <string name="result_dialog_title">Результат игры</string>
+    <string name="result_message">Поздравляем!\n\nСделано ходов: %d</string>
+
+    <string name="scores_title">Таблица результатов</string>
+    <string name="restart_button">Рестарт</string>
+    <string name="scores_button">Результаты</string>
+    <string name="exit">Выход</string>
+
+</resources>

@@ -14,7 +14,6 @@ public class FieldGenerator {
     private FieldGenerator() {
     }
 
-
     public static int[] nextGameField() {
         int[] nextField = generateNext();
         while (!checkSolvability(nextField)) {

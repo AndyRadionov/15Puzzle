@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import io.github.andyradionov.pyatnashki.BuildConfig;
+
 /**
  * @author Andrey Radionov
  */
@@ -12,9 +14,8 @@ import android.view.View;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onBannerClick(View view) {
-        String url = "https://ostrovok.ru/?utm_sourse=app-mobile&utm_medium=banner&utm_campaign=ostrovok";
-        Uri webpage = Uri.parse(url);
-        Intent startWebPageIntent = new Intent(Intent.ACTION_VIEW, webpage);
+        Uri advWebPage = Uri.parse(BuildConfig.ADV_URL);
+        Intent startWebPageIntent = new Intent(Intent.ACTION_VIEW, advWebPage);
         if (startWebPageIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(startWebPageIntent);
         }

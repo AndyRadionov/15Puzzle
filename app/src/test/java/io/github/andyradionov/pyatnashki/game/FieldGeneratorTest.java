@@ -1,4 +1,4 @@
-package io.github.andyradionov.pyatnashki;
+package io.github.andyradionov.pyatnashki.game;
 
 import org.junit.Test;
 
