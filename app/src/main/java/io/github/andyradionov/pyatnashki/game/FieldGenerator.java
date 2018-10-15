@@ -8,8 +8,7 @@ import java.util.Random;
  */
 
 public class FieldGenerator {
-    private static final int TILES_NUMBER = 16;
-    private static final HashSet<Integer> USED_NUMBERS = new HashSet<>(15);
+    private static final HashSet<Integer> USED_NUMBERS = new HashSet<>(GameModel.TILES_NUMBER - 1);
 
     private FieldGenerator() {
     }
@@ -23,12 +22,12 @@ public class FieldGenerator {
     }
 
     private static int[] generateNext() {
-        int[] nextField = new int[16];
+        int[] nextField = new int[GameModel.TILES_NUMBER];
         Random random = new Random();
-        for (int i = 0; i < TILES_NUMBER; i++) {
-            int nextInt = random.nextInt(16);
+        for (int i = 0; i < GameModel.TILES_NUMBER; i++) {
+            int nextInt = random.nextInt(GameModel.TILES_NUMBER);
             while (USED_NUMBERS.contains(nextInt)) {
-                nextInt = random.nextInt(16);
+                nextInt = random.nextInt(GameModel.TILES_NUMBER);
             }
             nextField[i] = nextInt;
             USED_NUMBERS.add(nextInt);
@@ -37,15 +36,14 @@ public class FieldGenerator {
         return nextField;
     }
 
-    //protected for testing purpose
     protected static boolean checkSolvability(int[] gameField) {
         int sum = 0;
-        for (int i = 0; i < TILES_NUMBER; i++) {
+        for (int i = 0; i < GameModel.TILES_NUMBER; i++) {
             if (gameField[i] == 0) {
                 sum += i / 4 + 1;
                 continue;
             }
-            for (int j = i + 1; j < TILES_NUMBER; j++) {
+            for (int j = i + 1; j < GameModel.TILES_NUMBER; j++) {
                 if (gameField[j] != 0 && gameField[i] > gameField[j]) {
                     sum++;
                 }

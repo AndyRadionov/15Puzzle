@@ -13,7 +13,7 @@ import io.github.andyradionov.pyatnashki.BuildConfig;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected void onBannerClick(View view) {
+    public void onBannerClick(View view) {
         Uri advWebPage = Uri.parse(BuildConfig.ADV_URL);
         Intent startWebPageIntent = new Intent(Intent.ACTION_VIEW, advWebPage);
         if (startWebPageIntent.resolveActivity(getPackageManager()) != null) {

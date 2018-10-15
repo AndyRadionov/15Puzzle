@@ -23,7 +23,6 @@ import io.github.andyradionov.pyatnashki.utils.ScoresHelper;
 public class GameActivity extends BaseActivity implements GameView {
     public static final int RESULT_CODE_EXIT = 100;
     private static final String MODEL_KEY = "model_key";
-    private static final int TILES_SIZE = 16;
 
     private String mMovesText;
     private String mStartButtonText;
@@ -132,11 +131,6 @@ public class GameActivity extends BaseActivity implements GameView {
         }
     }
 
-    @Override
-    public void onBannerClick(View view) {
-        super.onBannerClick(view);
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     private void setGameActive() {
         mStartButton.setText(mResetButtonText);
@@ -198,12 +192,12 @@ public class GameActivity extends BaseActivity implements GameView {
     }
 
     private void initTiles() {
-        mTiles = new TextView[TILES_SIZE];
+        mTiles = new TextView[GameModel.TILES_NUMBER];
         GridLayout tilesContainer = findViewById(R.id.tiles_container);
         for (int i = 0; i < mTiles.length - 1; i++) {
             initTile(R.layout.tile, i, tilesContainer);
         }
-        initTile(R.layout.empty_tile, TILES_SIZE - 1, tilesContainer);
+        initTile(R.layout.empty_tile, GameModel.TILES_NUMBER - 1, tilesContainer);
     }
 
     private void initTile(int tileLayout, int tileNumber, GridLayout tilesContainer) {

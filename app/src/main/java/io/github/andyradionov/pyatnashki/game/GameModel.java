@@ -10,6 +10,7 @@ import java.util.Arrays;
  */
 
 public class GameModel implements Parcelable {
+    public static final int TILES_NUMBER = 16;
     private static final int[] WIN_POSITION = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0};
 
     private int[] mNumbers;

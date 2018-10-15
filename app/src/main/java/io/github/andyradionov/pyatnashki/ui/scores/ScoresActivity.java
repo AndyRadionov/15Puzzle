@@ -61,9 +61,4 @@ public class ScoresActivity extends BaseActivity {
 
         scoresDisplay.setAdapter(scoreAdapter);
     }
-
-    @Override
-    public void onBannerClick(View view) {
-        super.onBannerClick(view);
-    }
 }
