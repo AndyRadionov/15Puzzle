@@ -195,9 +195,9 @@ public class GameActivity extends BaseActivity implements GameView {
         mTiles = new TextView[GameModel.TILES_NUMBER];
         GridLayout tilesContainer = findViewById(R.id.tiles_container);
         for (int i = 0; i < mTiles.length - 1; i++) {
-            initTile(R.layout.tile, i, tilesContainer);
+            initTile(R.layout.item_tile, i, tilesContainer);
         }
-        initTile(R.layout.empty_tile, GameModel.TILES_NUMBER - 1, tilesContainer);
+        initTile(R.layout.item_empty_tile, GameModel.TILES_NUMBER - 1, tilesContainer);
     }
 
     private void initTile(int tileLayout, int tileNumber, GridLayout tilesContainer) {
